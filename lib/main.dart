@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:logging/logging.dart';
+import 'package:intl/intl.dart';
 
 void main() {
+  final format = DateFormat('HH:mm:ss');
+  Logger.root.level = Level.FINE;
+  Logger.root.onRecord.listen((record) {
+    print('${format.format(record.time)}: ${record.message}');
+  });
+  WidgetsFlutterBinding.ensureInitialized();
+
   runApp(const MyApp());
 }
 
