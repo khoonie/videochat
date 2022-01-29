@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
 import 'package:intl/intl.dart';
 import 'package:videochat/theme.dart';
-import 'pages/connect.dart';
+//import 'package:videochat/theme.dart';
+import 'pages/connect2.dart';
 
 void main() {
   final format = DateFormat('HH:mm:ss');
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: LiveKitTheme().buildThemeData(context),
-      home: const ConnectPage(),
+      home: const ConnectPage2(),
     );
   }
 }
