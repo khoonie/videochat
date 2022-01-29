@@ -40,7 +40,10 @@ dependencies:
   flutter_svg: ^1.0.0
 
   livekit_client: 
-    path: ../client-sdk-flutter
+    git:
+      url: https://github.com/livekit/client-sdk-flutter
+      ref: main
+    #path: ../client-sdk-flutter
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
