@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "907214436256",
+    "project_id": "videochat-e00eb",
+    "storage_bucket": "videochat-e00eb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:907214436256:android:96c1c783e4995d642b16c5",
+        "android_client_info": {
+          "package_name": "com.mudoki.videochat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "907214436256-m97b7seijj1pua9hde12qug83ihttiqp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mudoki.videochat",
+            "certificate_hash": "afbee9df302a0d0b7cac178abbf74764b5f4905b"
+          }
+        },
+        {
+          "client_id": "907214436256-tp6l32fa597dgjnb74ve7p5rs5ub4bfh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyJNi4yH3gLcQ_ZFbV6xYPFxoh0ieJ7EM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "907214436256-tp6l32fa597dgjnb74ve7p5rs5ub4bfh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
