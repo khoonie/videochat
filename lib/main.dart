@@ -11,6 +11,8 @@ import 'navigation_home_screen.dart';
 import 'introduction/introduction_animation_screen.dart';
 import 'dart:io';
 
+import 'package:videochat/login/loginScreen.dart';
+
 void main() async {
   final format = DateFormat('HH:mm:ss');
   Logger.root.level = Level.FINE;
@@ -52,6 +54,7 @@ class MyApp extends StatelessWidget {
       ),
       //home: NavigationHomeScreen(),
       home: const IntroductionAnimationScreen(),
+      //home: LoginScreen(),
     );
   }
 }

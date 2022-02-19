@@ -6,6 +6,8 @@ import 'package:videochat/introduction/components/splash_view.dart';
 import 'package:videochat/introduction/components/top_back_skip_view.dart';
 import 'package:videochat/introduction/components/welcome_view.dart';
 import 'package:flutter/material.dart';
+import 'package:videochat/login/loginScreen.dart';
+import 'package:transition/transition.dart';
 
 class IntroductionAnimationScreen extends StatefulWidget {
   const IntroductionAnimationScreen({Key? key}) : super(key: key);
@@ -112,6 +114,13 @@ class _IntroductionAnimationScreenState
   }
 
   void _signUpClick() {
-    Navigator.pop(context);
+    //Navigator.pop(context);
+    Navigator.of(context).pushReplacement(Transition(
+        child: LoginScreen(),
+        transitionEffect: TransitionEffect.RIGHT_TO_LEFT));
+    // Navigator.push(
+    //   context,
+    //   MaterialPageRoute(builder: (context) => LoginScreen()),
+    // );
   }
 }

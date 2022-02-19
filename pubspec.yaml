@@ -44,6 +44,9 @@ dependencies:
   flutter_rating_bar: ^4.0.0
   animations: ^2.0.0
 
+  get: ^4.1.4
+  transition: ^2.0.2
+
   livekit_client: 
     git:
       url: https://github.com/livekit/client-sdk-flutter
