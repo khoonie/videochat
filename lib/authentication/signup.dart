@@ -11,7 +11,7 @@ import 'package:videochat/authentication/email_login.dart';
 import 'package:videochat/authentication/email_signup.dart';
 
 class SignUp extends StatelessWidget {
-  final String title = "LivingCo Sign Up";
+  final String title = "Videochat Signup";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +24,7 @@ class SignUp extends StatelessWidget {
               Widget>[
             Padding(
               padding: EdgeInsets.all(10.0),
-              child: Text("LivingCo Sign Up",
+              child: Text("Videochat Signup",
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 30,

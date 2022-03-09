@@ -1,5 +1,8 @@
 import 'package:videochat/app_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:videochat/authentication/authentication.dart';
+
+import '../authentication/signup.dart';
 
 class HomeDrawer extends StatefulWidget {
   const HomeDrawer(
@@ -19,6 +22,26 @@ class HomeDrawer extends StatefulWidget {
 
 class _HomeDrawerState extends State<HomeDrawer> {
   List<DrawerList>? drawerList;
+  bool _isSigningOut = false;
+
+  Route _routeToSignInScreen() {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => SignUp(),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        var begin = Offset(-1.0, 0.0);
+        var end = Offset.zero;
+        var curve = Curves.ease;
+
+        var tween =
+            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+        return SlideTransition(
+          position: animation.drive(tween),
+          child: child,
+        );
+      },
+    );
+  }
+
   @override
   void initState() {
     setDrawerListArray();
@@ -181,8 +204,18 @@ class _HomeDrawerState extends State<HomeDrawer> {
     );
   }
 
-  void onTapped() {
-    print('Doing Something...'); // Print to console.
+  Future<void> onTapped() async {
+    // Sign out
+    //print('Doing Something...'); // Print to console.
+
+    setState(() {
+      _isSigningOut = true;
+    });
+    await Authentication.signOut(context: context);
+    setState(() {
+      _isSigningOut = false;
+    });
+    Navigator.of(context).pushReplacement(_routeToSignInScreen());
   }
 
   Widget inkwell(DrawerList listData) {
