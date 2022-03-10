@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_firebase_chat_core/flutter_firebase_chat_core.dart';
-import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
+//import 'package:flutter_firebase_chat_core/flutter_firebase_chat_core.dart';
+//import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:videochat/authentication/authentication.dart';
 import 'package:videochat/navigation_home_screen.dart';
@@ -123,13 +123,13 @@ class _GoogleSignInButtonState extends State<GoogleSignInButton> {
                   });
 
                   if (user != null) {
-                    await FirebaseChatCore.instance.createUserInFirestore(
-                      types.User(
-                          firstName: user.displayName,
-                          id: user.uid,
-                          imageUrl: user.photoURL,
-                          lastName: user.displayName),
-                    );
+                    // await FirebaseChatCore.instance.createUserInFirestore(
+                    //   types.User(
+                    //       firstName: user.displayName,
+                    //       id: user.uid,
+                    //       imageUrl: user.photoURL,
+                    //       lastName: user.displayName),
+                    // );
 
                     Navigator.of(context).pushReplacement(
                       MaterialPageRoute(

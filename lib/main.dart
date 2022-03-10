@@ -8,10 +8,12 @@ import 'package:videochat/app_theme.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/foundation.dart';
 import 'navigation_home_screen.dart';
+import 'authentication/signup.dart';
 import 'introduction/introduction_animation_screen.dart';
 import 'dart:io';
 
 import 'package:videochat/login/loginScreen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
   final format = DateFormat('HH:mm:ss');
@@ -20,16 +22,26 @@ void main() async {
     print('${format.format(record.time)}: ${record.message}');
   });
   WidgetsFlutterBinding.ensureInitialized();
+  // remove the entry to enable intro screen again
+  // final success = await prefs.remove('seenIntro);
+  final prefs = await SharedPreferences.getInstance();
+  final int? seenIntro = (prefs.getInt('seenIntro') ?? 0);
+  if (seenIntro == 0) {
+    await prefs.setInt('seenIntro', 1);
+  }
+
   await SystemChrome.setPreferredOrientations(<DeviceOrientation>[
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown
-  ]).then((_) => runApp(MyApp()));
+  ]).then((_) => runApp(MyApp(seenIntro: seenIntro)));
   //runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
+  const MyApp({Key? key, required int? seenIntro})
+      : _seenIntro = seenIntro,
+        super(key: key);
+  final int? _seenIntro;
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -42,6 +54,7 @@ class MyApp extends StatelessWidget {
       systemNavigationBarDividerColor: Colors.transparent,
       systemNavigationBarIconBrightness: Brightness.dark,
     ));
+
     return MaterialApp(
       title: 'Videochat',
       debugShowCheckedModeBanner: false,
@@ -53,7 +66,7 @@ class MyApp extends StatelessWidget {
         platform: TargetPlatform.iOS,
       ),
       //home: NavigationHomeScreen(),
-      home: const IntroductionAnimationScreen(),
+      home: (_seenIntro == 0) ? const IntroductionAnimationScreen() : SignUp(),
       //home: LoginScreen(),
     );
   }
