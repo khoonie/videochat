@@ -13,6 +13,7 @@ import 'introduction/introduction_animation_screen.dart';
 import 'dart:io';
 
 import 'package:videochat/login/loginScreen.dart';
+import 'package:videochat/authentication/login_signup.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
@@ -22,9 +23,10 @@ void main() async {
     print('${format.format(record.time)}: ${record.message}');
   });
   WidgetsFlutterBinding.ensureInitialized();
-  // remove the entry to enable intro screen again
-  // final success = await prefs.remove('seenIntro);
   final prefs = await SharedPreferences.getInstance();
+  // remove the entry to enable intro screen again
+  final success = await prefs.remove('seenIntro');
+
   final int? seenIntro = (prefs.getInt('seenIntro') ?? 0);
   if (seenIntro == 0) {
     await prefs.setInt('seenIntro', 1);
@@ -66,7 +68,9 @@ class MyApp extends StatelessWidget {
         platform: TargetPlatform.iOS,
       ),
       //home: NavigationHomeScreen(),
-      home: (_seenIntro == 0) ? const IntroductionAnimationScreen() : SignUp(),
+      home: (_seenIntro == 0)
+          ? const IntroductionAnimationScreen()
+          : LoginSignupScreen(),
       //home: LoginScreen(),
     );
   }

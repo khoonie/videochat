@@ -1,3 +1,4 @@
+import 'package:videochat/authentication/login_signup.dart';
 import 'package:videochat/introduction/components/care_view.dart';
 import 'package:videochat/introduction/components/center_next_button.dart';
 import 'package:videochat/introduction/components/mood_diary_view.dart';
@@ -118,7 +119,8 @@ class _IntroductionAnimationScreenState
     //Navigator.pop(context);
     Navigator.of(context).pushReplacement(Transition(
         // child: LoginScreen(),
-        child: SignUp(),
+        //child: SignUp(),
+        child: LoginSignupScreen(),
         transitionEffect: TransitionEffect.RIGHT_TO_LEFT));
     // Navigator.push(
     //   context,

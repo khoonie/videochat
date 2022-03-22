@@ -65,7 +65,8 @@ class WelcomeView extends StatelessWidget {
                 child: Container(
                   constraints: BoxConstraints(maxWidth: 350, maxHeight: 350),
                   child: Image.asset(
-                    'assets/introduction_animation/welcome.png',
+                    // 'assets/introduction_animation/welcome.png',
+                    'assets/introduction_animation/Kitchen 2.png',
                     fit: BoxFit.contain,
                   ),
                 ),
@@ -73,7 +74,7 @@ class WelcomeView extends StatelessWidget {
               SlideTransition(
                 position: _welcomeFirstHalfAnimation,
                 child: Text(
-                  "Welcome",
+                  "Welcome to Seeker App",
                   style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
                 ),
               ),
@@ -81,7 +82,7 @@ class WelcomeView extends StatelessWidget {
                 padding:
                     EdgeInsets.only(left: 64, right: 64, top: 16, bottom: 16),
                 child: Text(
-                  "Stay organised and live stress-free with you-do app",
+                  "Find, Sell, Buy or Rent your ideal residence with confidence",
                   textAlign: TextAlign.center,
                 ),
               ),

@@ -2,7 +2,7 @@ import 'package:videochat/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:videochat/authentication/authentication.dart';
 
-import '../authentication/signup.dart';
+import '../authentication/login_signup.dart';
 
 class HomeDrawer extends StatefulWidget {
   const HomeDrawer(
@@ -26,7 +26,8 @@ class _HomeDrawerState extends State<HomeDrawer> {
 
   Route _routeToSignInScreen() {
     return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) => SignUp(),
+      pageBuilder: (context, animation, secondaryAnimation) =>
+          LoginSignupScreen(),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         var begin = Offset(-1.0, 0.0);
         var end = Offset.zero;

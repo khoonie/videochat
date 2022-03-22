@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:videochat/app_theme.dart';
 import 'package:videochat/custom_drawer/drawer_user_controller.dart';
 import 'package:videochat/custom_drawer/home_drawer.dart';
@@ -8,6 +9,12 @@ import 'package:videochat/invite_friend_screen.dart';
 import 'package:flutter/material.dart';
 
 class NavigationHomeScreen extends StatefulWidget {
+  const NavigationHomeScreen({Key? key, required User? user})
+      : _user = user,
+        super(key: key);
+
+  final User? _user;
+
   @override
   _NavigationHomeScreenState createState() => _NavigationHomeScreenState();
 }

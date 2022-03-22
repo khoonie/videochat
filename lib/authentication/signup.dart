@@ -1,11 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-//import 'package:flutter_firebase_chat_core/flutter_firebase_chat_core.dart';
-//import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
+
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:videochat/authentication/authentication.dart';
 import 'package:videochat/navigation_home_screen.dart';
-//import 'package:poc1/homelist.dart';
 
 import 'package:videochat/authentication/email_login.dart';
 import 'package:videochat/authentication/email_signup.dart';
@@ -56,14 +54,6 @@ class SignUp extends StatelessWidget {
                     ),
                   );
                 }),
-/*            Padding(
-                padding: EdgeInsets.all(10.0),
-                child: SignInButton(
-                  Buttons.Twitter,
-                  text: "Sign up with Twitter",
-                  onPressed: () {},
-                )),
-*/
             Padding(
                 padding: EdgeInsets.all(10.0),
                 child: SignInButtonBuilder(
@@ -123,17 +113,9 @@ class _GoogleSignInButtonState extends State<GoogleSignInButton> {
                   });
 
                   if (user != null) {
-                    // await FirebaseChatCore.instance.createUserInFirestore(
-                    //   types.User(
-                    //       firstName: user.displayName,
-                    //       id: user.uid,
-                    //       imageUrl: user.photoURL,
-                    //       lastName: user.displayName),
-                    // );
-
                     Navigator.of(context).pushReplacement(
                       MaterialPageRoute(
-                        builder: (context) => NavigationHomeScreen(),
+                        builder: (context) => NavigationHomeScreen(user: user),
 //                        builder: (context) => HomeList(
 //                          user: user,
 //                        ),
@@ -141,76 +123,6 @@ class _GoogleSignInButtonState extends State<GoogleSignInButton> {
                     );
                   }
                 },
-              )
-/*
-          : OutlinedButton(
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Colors.white),
-                shape: MaterialStateProperty.all(
-                  ContinuousRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ),
-              ),
-              onPressed: () async {
-                setState(() {
-                  _isSigningIn = true;
-                });
-
-                User? user =
-                    await Authentication.signInWithGoogle(context: context);
-                // TODO: set call to sign in
-
-                setState(() {
-                  _isSigningIn = false;
-                });
-
-                if (user != null) {
-                  Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(
-                      builder: (context) => UserInfoScreen(
-                        user: user,
-                      ),
-                    ),
-                  );
-                }
-              },
-              child: Padding(
-                //padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
-                padding: EdgeInsets.zero,
-                child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      SignInButton(
-                        Buttons.Google,
-                        text: "Sign in with Google",
-                        onPressed: () {},
-                      )
-                    ]
-
-                    /*
-                  children: <Widget>[
-                    Image(
-                        image: AssetImage("assets/images/google_logo.png"),
-                        height: 35.0),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 10),
-                      child: Text(
-                        'Sign in with Google',
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.black54,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    )
-                  ],
-                  */
-                    ),
-              ),
-            ),
-            */
-        );
+              ));
   }
 }

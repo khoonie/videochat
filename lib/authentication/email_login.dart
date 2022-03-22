@@ -94,11 +94,11 @@ class _EmailLogInState extends State<EmailLogIn> {
             email: emailController.text, password: passwordController.text)
         .then((result) {
       isLoading = false;
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => NavigationHomeScreen()),
-        // MaterialPageRoute(builder: (context) => Home(uid: result.user!.uid)),
-      );
+      // Navigator.pushReplacement(
+      //   context,
+      //   MaterialPageRoute(builder: (context) => NavigationHomeScreen()),
+      //   // MaterialPageRoute(builder: (context) => Home(uid: result.user!.uid)),
+      // );
     }).catchError((err) {
       print(err.message);
       showDialog(
