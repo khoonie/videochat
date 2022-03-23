@@ -14,14 +14,11 @@ class Authentication {
 
     User? user = FirebaseAuth.instance.currentUser;
     if (user != null) {
-//       Navigator.of(context).pushReplacement(
-//         MaterialPageRoute(
-//           builder: (context) => NavigationHomeScreen(),
-// //          builder: (context) => HomeList(
-// //            user: user,
-//           //         ),
-//         ),
-//       );
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (context) => NavigationHomeScreen(user: user),
+        ),
+      );
     }
 
     return firebaseApp;

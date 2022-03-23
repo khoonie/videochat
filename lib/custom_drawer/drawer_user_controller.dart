@@ -1,10 +1,12 @@
 import 'package:videochat/app_theme.dart';
 import 'package:videochat/custom_drawer/home_drawer.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class DrawerUserController extends StatefulWidget {
   const DrawerUserController({
     Key? key,
+    required User user,
     this.drawerWidth = 250,
     this.onDrawerCall,
     this.screenView,
@@ -12,8 +14,10 @@ class DrawerUserController extends StatefulWidget {
     this.menuView,
     this.drawerIsOpen,
     this.screenIndex,
-  }) : super(key: key);
+  })  : _user = user,
+        super(key: key);
 
+  final User _user;
   final double drawerWidth;
   final Function(DrawerIndex)? onDrawerCall;
   final Widget? screenView;
@@ -31,11 +35,12 @@ class _DrawerUserControllerState extends State<DrawerUserController>
   ScrollController? scrollController;
   AnimationController? iconAnimationController;
   AnimationController? animationController;
-
+  late User _user;
   double scrolloffset = 0.0;
 
   @override
   void initState() {
+    _user = widget._user;
     animationController = AnimationController(
         duration: const Duration(milliseconds: 2000), vsync: this);
     iconAnimationController = AnimationController(
@@ -117,6 +122,7 @@ class _DrawerUserControllerState extends State<DrawerUserController>
                       transform: Matrix4.translationValues(
                           scrollController!.offset, 0.0, 0.0),
                       child: HomeDrawer(
+                        user: _user,
                         screenIndex: widget.screenIndex == null
                             ? DrawerIndex.HOME
                             : widget.screenIndex,

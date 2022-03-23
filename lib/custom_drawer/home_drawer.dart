@@ -1,17 +1,20 @@
 import 'package:videochat/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:videochat/authentication/authentication.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
 import '../authentication/login_signup.dart';
 
 class HomeDrawer extends StatefulWidget {
   const HomeDrawer(
       {Key? key,
+      required User user,
       this.screenIndex,
       this.iconAnimationController,
       this.callBackIndex})
-      : super(key: key);
+      : _user = user,
+        super(key: key);
 
+  final User _user;
   final AnimationController? iconAnimationController;
   final DrawerIndex? screenIndex;
   final Function(DrawerIndex)? callBackIndex;
@@ -23,7 +26,7 @@ class HomeDrawer extends StatefulWidget {
 class _HomeDrawerState extends State<HomeDrawer> {
   List<DrawerList>? drawerList;
   bool _isSigningOut = false;
-
+  late User _user;
   Route _routeToSignInScreen() {
     return PageRouteBuilder(
       pageBuilder: (context, animation, secondaryAnimation) =>
@@ -45,6 +48,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
 
   @override
   void initState() {
+    _user = widget._user;
     setDrawerListArray();
     super.initState();
   }
@@ -57,25 +61,30 @@ class _HomeDrawerState extends State<HomeDrawer> {
         icon: Icon(Icons.home),
       ),
       DrawerList(
-        index: DrawerIndex.Help,
-        labelName: 'Help',
-        isAssetsImage: true,
-        imageName: 'assets/images/supportIcon.png',
+        index: DrawerIndex.Survey,
+        labelName: 'Survey',
+        icon: Icon(Icons.edit_note),
       ),
       DrawerList(
-        index: DrawerIndex.FeedBack,
-        labelName: 'FeedBack',
-        icon: Icon(Icons.help),
+        index: DrawerIndex.Buy,
+        labelName: 'Buy',
+        icon: Icon(Icons.house),
+      ),
+      DrawerList(
+        index: DrawerIndex.Sell,
+        labelName: 'Sell',
+        icon: Icon(Icons.house_outlined),
+      ),
+      DrawerList(
+        index: DrawerIndex.Help,
+        labelName: 'Help / Feedback',
+        isAssetsImage: true,
+        imageName: 'assets/images/supportIcon.png',
       ),
       DrawerList(
         index: DrawerIndex.Invite,
         labelName: 'Invite Friend',
         icon: Icon(Icons.group),
-      ),
-      DrawerList(
-        index: DrawerIndex.Share,
-        labelName: 'Rate the app',
-        icon: Icon(Icons.share),
       ),
       DrawerList(
         index: DrawerIndex.About,
@@ -129,10 +138,12 @@ class _HomeDrawerState extends State<HomeDrawer> {
                               ],
                             ),
                             child: ClipRRect(
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(60.0)),
-                              child: Image.asset('assets/images/userImage.png'),
-                            ),
+                                borderRadius: const BorderRadius.all(
+                                    Radius.circular(60.0)),
+                                child: Image.network(_user.photoURL!,
+                                    fit: BoxFit
+                                        .fitHeight) //Image.asset('assets/images/userImage.png'),
+                                ),
                           ),
                         ),
                       );
@@ -141,7 +152,8 @@ class _HomeDrawerState extends State<HomeDrawer> {
                   Padding(
                     padding: const EdgeInsets.only(top: 8, left: 4),
                     child: Text(
-                      'Chris Hemsworth',
+                      _user.displayName!,
+//                      'Chris Hemsworth',
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: AppTheme.grey,
@@ -328,12 +340,13 @@ class _HomeDrawerState extends State<HomeDrawer> {
 
 enum DrawerIndex {
   HOME,
-  FeedBack,
   Help,
-  Share,
   About,
   Invite,
-  Testing,
+  Survey,
+  Buy,
+  Sell,
+  Agents,
 }
 
 class DrawerList {

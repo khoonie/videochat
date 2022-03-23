@@ -9,11 +9,11 @@ import 'package:videochat/invite_friend_screen.dart';
 import 'package:flutter/material.dart';
 
 class NavigationHomeScreen extends StatefulWidget {
-  const NavigationHomeScreen({Key? key, required User? user})
+  const NavigationHomeScreen({Key? key, required User user})
       : _user = user,
         super(key: key);
 
-  final User? _user;
+  final User _user;
 
   @override
   _NavigationHomeScreenState createState() => _NavigationHomeScreenState();
@@ -22,9 +22,10 @@ class NavigationHomeScreen extends StatefulWidget {
 class _NavigationHomeScreenState extends State<NavigationHomeScreen> {
   Widget? screenView;
   DrawerIndex? drawerIndex;
-
+  late User _user;
   @override
   void initState() {
+    _user = widget._user;
     drawerIndex = DrawerIndex.HOME;
     screenView = const MyHomePage();
     super.initState();
@@ -40,6 +41,7 @@ class _NavigationHomeScreenState extends State<NavigationHomeScreen> {
         child: Scaffold(
           backgroundColor: AppTheme.nearlyWhite,
           body: DrawerUserController(
+            user: _user,
             screenIndex: drawerIndex,
             drawerWidth: MediaQuery.of(context).size.width * 0.75,
             onDrawerCall: (DrawerIndex drawerIndexdata) {
@@ -61,15 +63,27 @@ class _NavigationHomeScreenState extends State<NavigationHomeScreen> {
         setState(() {
           screenView = const MyHomePage();
         });
-      } else if (drawerIndex == DrawerIndex.Help) {
+      } else if (drawerIndex == DrawerIndex.Survey) {
         setState(() {
           screenView = HelpScreen();
         });
-      } else if (drawerIndex == DrawerIndex.FeedBack) {
+      } else if (drawerIndex == DrawerIndex.Buy) {
         setState(() {
-          screenView = FeedbackScreen();
+          screenView = InviteFriend();
+        });
+      } else if (drawerIndex == DrawerIndex.Sell) {
+        setState(() {
+          screenView = InviteFriend();
+        });
+      } else if (drawerIndex == DrawerIndex.Help) {
+        setState(() {
+          screenView = InviteFriend();
         });
       } else if (drawerIndex == DrawerIndex.Invite) {
+        setState(() {
+          screenView = InviteFriend();
+        });
+      } else if (drawerIndex == DrawerIndex.About) {
         setState(() {
           screenView = InviteFriend();
         });

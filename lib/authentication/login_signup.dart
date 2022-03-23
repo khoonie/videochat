@@ -491,12 +491,13 @@ class _GoogleSignInButtonState extends State<GoogleSignInButton> {
                 setState(() {
                   _isSigningIn = false;
                 });
-
-                Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(
-                    builder: (context) => NavigationHomeScreen(user: user),
-                  ),
-                );
+                if (user != null) {
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(
+                      builder: (context) => NavigationHomeScreen(user: user),
+                    ),
+                  );
+                }
               }));
   }
 }

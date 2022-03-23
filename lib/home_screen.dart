@@ -130,7 +130,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
               child: Padding(
                 padding: const EdgeInsets.only(top: 4),
                 child: Text(
-                  'Flutter UI',
+                  'Seeker Properties',
                   style: TextStyle(
                     fontSize: 22,
                     color: AppTheme.darkText,
