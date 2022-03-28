@@ -2,11 +2,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:videochat/app_theme.dart';
 import 'package:videochat/custom_drawer/drawer_user_controller.dart';
 import 'package:videochat/custom_drawer/home_drawer.dart';
-import 'package:videochat/feedback_screen.dart';
+import 'package:videochat/survey_screen.dart';
 import 'package:videochat/help_screen.dart';
 import 'package:videochat/home_screen.dart';
 import 'package:videochat/invite_friend_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:videochat/survey.dart';
 
 class NavigationHomeScreen extends StatefulWidget {
   const NavigationHomeScreen({Key? key, required User user})
@@ -65,7 +66,7 @@ class _NavigationHomeScreenState extends State<NavigationHomeScreen> {
         });
       } else if (drawerIndex == DrawerIndex.Survey) {
         setState(() {
-          screenView = HelpScreen();
+          screenView = SeekerSurvey(user: _user);
         });
       } else if (drawerIndex == DrawerIndex.Buy) {
         setState(() {
