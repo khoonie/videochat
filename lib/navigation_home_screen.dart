@@ -7,7 +7,7 @@ import 'package:videochat/help_screen.dart';
 import 'package:videochat/home_screen.dart';
 import 'package:videochat/invite_friend_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:videochat/survey.dart';
+import 'package:videochat/buy_screen.dart';
 
 class NavigationHomeScreen extends StatefulWidget {
   const NavigationHomeScreen({Key? key, required User user})
@@ -66,11 +66,11 @@ class _NavigationHomeScreenState extends State<NavigationHomeScreen> {
         });
       } else if (drawerIndex == DrawerIndex.Survey) {
         setState(() {
-          screenView = SeekerSurvey(user: _user);
+          screenView = SurveyScreen(user: _user);
         });
       } else if (drawerIndex == DrawerIndex.Buy) {
         setState(() {
-          screenView = InviteFriend();
+          screenView = BuyScreen(user: _user);
         });
       } else if (drawerIndex == DrawerIndex.Sell) {
         setState(() {

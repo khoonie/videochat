@@ -99,14 +99,17 @@ class _DrawerUserControllerState extends State<DrawerUserController>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // drawerEnableOpenDragGesture: false,
       backgroundColor: AppTheme.white,
       body: SingleChildScrollView(
         controller: scrollController,
         scrollDirection: Axis.horizontal,
-        physics: const PageScrollPhysics(parent: ClampingScrollPhysics()),
+        //physics: const PageScrollPhysics(parent: ClampingScrollPhysics()),
+        physics: const NeverScrollableScrollPhysics(),
         child: SizedBox(
           height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width + widget.drawerWidth,
+          //width: MediaQuery.of(context).size.width + widget.drawerWidth,
+          width: MediaQuery.of(context).size.width + 295,
           //we use with as screen width and add drawerWidth (from navigation_home_screen)
           child: Row(
             children: <Widget>[
@@ -140,7 +143,9 @@ class _DrawerUserControllerState extends State<DrawerUserController>
               ),
               SizedBox(
                 width: MediaQuery.of(context).size.width,
+
                 height: MediaQuery.of(context).size.height,
+                //height: 200,
                 //full-screen Width with widget.screenView
                 child: Container(
                   decoration: BoxDecoration(
@@ -153,8 +158,10 @@ class _DrawerUserControllerState extends State<DrawerUserController>
                   ),
                   child: Stack(
                     children: <Widget>[
+                      widget.screenView!,
                       //this IgnorePointer we use as touch(user Interface) widget.screen View, for example scrolloffset == 1 means drawer is close we just allow touching all widget.screen View
                       IgnorePointer(
+                        // ignoring: scrolloffset == 1 || false,
                         ignoring: scrolloffset == 1 || false,
                         child: widget.screenView,
                       ),

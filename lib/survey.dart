@@ -81,76 +81,92 @@ class _SeekerSurveyState extends State<SeekerSurvey> {
                   },
                   task: task,
                   themeData: Theme.of(context).copyWith(
-                    colorScheme: ColorScheme.fromSwatch(
-                      primarySwatch: Colors.cyan,
-                    ).copyWith(
-                      onPrimary: Colors.white,
-                    ),
-                    primaryColor: Colors.cyan,
-                    backgroundColor: Colors.white,
-                    appBarTheme: const AppBarTheme(
-                      color: Colors.white,
-                      iconTheme: IconThemeData(
-                        color: Colors.cyan,
+                      colorScheme: ColorScheme.fromSwatch(
+                        primarySwatch: Colors.cyan,
+                      ).copyWith(
+                        onPrimary: Colors.white,
                       ),
-                      textTheme: TextTheme(
-                        button: TextStyle(
+                      primaryColor: Colors.blue,
+                      backgroundColor: Colors.white,
+                      appBarTheme: const AppBarTheme(
+                        elevation: 0,
+                        color: Colors.white,
+                        iconTheme: IconThemeData(
                           color: Colors.cyan,
                         ),
-                      ),
-                    ),
-                    iconTheme: const IconThemeData(
-                      color: Colors.cyan,
-                    ),
-                    outlinedButtonTheme: OutlinedButtonThemeData(
-                      style: ButtonStyle(
-                        minimumSize: MaterialStateProperty.all(
-                          const Size(100.0, 40.0),
-                        ),
-                        side: MaterialStateProperty.resolveWith(
-                          (Set<MaterialState> state) {
-                            if (state.contains(MaterialState.disabled)) {
-                              return const BorderSide(
-                                color: Colors.grey,
-                              );
-                            }
-                            return const BorderSide(
-                              color: Colors.black45,
-                            );
-                          },
-                        ),
-                        shape: MaterialStateProperty.all(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8.0),
+                        textTheme: TextTheme(
+                          button: TextStyle(
+                            color: Colors.black,
                           ),
                         ),
-                        textStyle: MaterialStateProperty.resolveWith(
-                          (Set<MaterialState> state) {
-                            if (state.contains(MaterialState.disabled)) {
+                      ),
+                      iconTheme: const IconThemeData(
+                        color: Colors.black,
+                      ),
+                      outlinedButtonTheme: OutlinedButtonThemeData(
+                        style: ButtonStyle(
+                          minimumSize: MaterialStateProperty.all(
+                            const Size(100.0, 40.0),
+                          ),
+                          side: MaterialStateProperty.resolveWith(
+                            (Set<MaterialState> state) {
+                              if (state.contains(MaterialState.disabled)) {
+                                return const BorderSide(
+                                  color: Colors.red,
+                                );
+                              }
+                              return const BorderSide(
+                                color: Colors.black45,
+                              );
+                            },
+                          ),
+                          shape: MaterialStateProperty.all(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                          ),
+                          textStyle: MaterialStateProperty.resolveWith(
+                            (Set<MaterialState> state) {
+                              if (state.contains(MaterialState.disabled)) {
+                                return Theme.of(context)
+                                    .textTheme
+                                    .button
+                                    ?.copyWith(
+                                      color: Colors.cyan,
+                                    );
+                              }
                               return Theme.of(context)
                                   .textTheme
                                   .button
                                   ?.copyWith(
                                     color: Colors.cyan,
                                   );
-                            }
-                            return Theme.of(context).textTheme.button?.copyWith(
+                            },
+                          ),
+                        ),
+                      ),
+                      textButtonTheme: TextButtonThemeData(
+                        style: ButtonStyle(
+                          textStyle: MaterialStateProperty.all(
+                            Theme.of(context).textTheme.button?.copyWith(
                                   color: Colors.cyan,
-                                );
-                          },
+                                ),
+                          ),
                         ),
                       ),
-                    ),
-                    textButtonTheme: TextButtonThemeData(
-                      style: ButtonStyle(
-                        textStyle: MaterialStateProperty.all(
-                          Theme.of(context).textTheme.button?.copyWith(
-                                color: Colors.cyan,
-                              ),
-                        ),
-                      ),
-                    ),
-                  ),
+                      textTheme: const TextTheme(
+                          headline2:
+                              TextStyle(fontSize: 30, color: Colors.black),
+                          headline5: TextStyle(
+                              debugLabel: 'abc',
+                              fontSize: 15,
+                              color: Colors.black,
+                              height: 0,
+                              letterSpacing: 0.5),
+                          bodyText2:
+                              TextStyle(fontSize: 15, color: Colors.black),
+                          subtitle1:
+                              TextStyle(fontSize: 20, color: Colors.black))),
                 );
               }
               return const CircularProgressIndicator.adaptive();

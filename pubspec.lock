@@ -744,6 +744,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.0.21"
+  swipeable_card_stack:
+    dependency: "direct main"
+    description:
+      name: swipeable_card_stack
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.5"
   synchronized:
     dependency: transitive
     description:
